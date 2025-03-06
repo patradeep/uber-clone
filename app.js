@@ -4,9 +4,10 @@ const dotenv=require('dotenv');
 dotenv.config();
 const cors = require('cors');
 app.use(cors({
-  origin: ['https://your-frontend-domain.netlify.app', 'http://localhost:3000'],
+  origin: ['https://chipper-monstera-a0011c.netlify.app', 'http://localhost:3000'],
   credentials: true,
-  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS']
+  methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
+  allowedHeaders: ['Content-Type', 'Authorization']
 }));
 const connectToDatabase=require('./db/db');
 const userRoutes = require('./routes/user.routes');
