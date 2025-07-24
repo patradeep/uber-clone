@@ -97,24 +97,24 @@ function CaptainHome() {
               </div>
             </div>
             <div>
-              <h4 className='text-xl font-semibold'>345</h4>
+              <h4 className='text-xl font-semibold'>---</h4>
               <p className='text-sm text-gray-500'>Earned</p>
             </div>
           </div>
           <div className='flex justify-between items-start bg-yellow-300 rounded-lg p-6'>
             <div className='text-center'>
               <i className="text-2xl font-thin ri-timer-line"></i>
-              <h5 className='text-lg font-medium'>13.4</h5>
+              <h5 className='text-lg font-medium'>---</h5>
               <p className='text-xs text-gray-700'>Hours</p>
             </div>
             <div className='text-center'>
               <i className="text-2xl font-thin ri-pin-distance-fill"></i>
-              <h5 className='text-lg font-medium'>123</h5>
+              <h5 className='text-lg font-medium'>---</h5>
               <p className='text-xs text-gray-700'>KM</p>
             </div>
             <div className='text-center'>
               <i className="text-2xl font-thin ri-sticky-note-add-line"></i>
-              <h5 className='text-lg font-medium'>10</h5>
+              <h5 className='text-lg font-medium'>--</h5>
               <p className='text-xs text-gray-700'>Tasks</p>
             </div>
           </div>
