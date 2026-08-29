@@ -4,7 +4,7 @@ This project is a clone of the Uber application, providing functionalities for u
 
 
 **Live Website:**
-- [Netlify Link](https://chipper-monstera-a0011c.netlify.app/)
+- [Netlify Link]([https://chipper-monstera-a0011c.netlify.app/](https://uber-clone-frontend-lj7d.onrender.com))
 
   
 ## Features
