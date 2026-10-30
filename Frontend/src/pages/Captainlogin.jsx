@@ -1,23 +1,23 @@
 import React, { useContext, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { CaptainDataContext } from "../context/CaptionContext";
 import axios from "axios";
 
 const Captionlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {captain, setCaptain} = useContext(CaptainDataContext);
+  const { captain, setCaptain } = useContext(CaptainDataContext);
   const navigate = useNavigate();
-  const SubmitHandler = async(e) => {
+  const SubmitHandler = async (e) => {
     e.preventDefault();
     // call login API here
     // for now, I'll just console.log the values
-    const captainData={email,password};
+    const captainData = { email, password };
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/captains/login`, captainData);
-    if(response.status===200){
+    if (response.status === 200) {
       localStorage.setItem('token', response.data.token);
-      setCaptain(response.data.captain); 
-      
+      setCaptain(response.data.captain);
+
       navigate("/captain-home");
     }
 

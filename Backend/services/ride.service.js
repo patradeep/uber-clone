@@ -15,7 +15,7 @@ async function gateFare(picup, dropoff) {
 
   const { distance, time } = await mapService.getDistanceAndTime(picup, dropoff);
 
-  if (isNaN(distance.value) || isNaN(time.value)) {
+  if (isNaN(distance) || isNaN(time)) {
     throw new Error('Invalid distance or time returned from map service');
   }
 
@@ -23,8 +23,8 @@ async function gateFare(picup, dropoff) {
   const fares = {};
   for (const [vehicleType, rates] of Object.entries(fareRates)) {
     fares[vehicleType] = Math.floor(rates.basePrice +
-                         ((distance.value / 1000) * rates.perKm) +
-                         ((time.value / 60) * rates.perMinute));
+                         ((distance / 1000) * rates.perKm) +
+                         ((time / 60) * rates.perMinute));
   }
   return fares;
 }
@@ -102,7 +102,7 @@ module.exports.completeRide = async ({rideId,captain}) => {
     );
     return ride;
   } catch (error) {
-    console.error('Error completing ride:', error);
+    console.error('Error completing ride:', error); 
     throw error;
   }
 };

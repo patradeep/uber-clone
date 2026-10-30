@@ -1,4 +1,3 @@
-import { StrictMode } from "react";
 import { createRoot } from "react-dom/client";
 import UserContext from "./context/UserContext.jsx";
 import "./index.css";

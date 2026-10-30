@@ -1,7 +1,7 @@
 import React from 'react'
 
 function DriverDetail(props) {
-  
+
   return (
     <div>
       <h2 className="text-xl font-semibold text-center p-3">Driver detail</h2>
@@ -18,7 +18,7 @@ function DriverDetail(props) {
         <div>
           <h3 className="text-lg font-medium">562/11-A</h3>
           <p className="text-gray-600">{props.ride?.dropoff}.</p>
-        </div> 
+        </div>
       </div>
       <div className="flex items-center gap-5 p-1">
         <i className="text-lg ri-map-pin-4-fill"></i>
@@ -28,8 +28,8 @@ function DriverDetail(props) {
         </div>
       </div>
       <div className="flex items-center gap-3 p-1">
-      <i className="ri-money-rupee-circle-fill"></i>
-      <div>
+        <i className="ri-money-rupee-circle-fill"></i>
+        <div>
           <h3 className="text-lg font-medium">{props.ride?.fare}</h3>
           <p className="text-gray-600">Cash</p>
         </div>

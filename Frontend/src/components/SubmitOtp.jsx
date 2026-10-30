@@ -11,18 +11,18 @@ function SubmitOtp(props) {
     try {
       const response = await axios.get(
         `${import.meta.env.VITE_BASE_URL}/rides/start_ride`, {
-          params: {
-        rideId: props.ride._id,
-        otp: otp
-          },
-          headers: {
-        Authorization: `Bearer ${localStorage.getItem("token")}`,
-          },
-        })
-        if(response.status === 200) {
-          props.setOtppanal(false);
-          navigate('/captain-riding', { state: { ride: props.ride } });
-        }
+        params: {
+          rideId: props.ride._id,
+          otp: otp
+        },
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem("token")}`,
+        },
+      })
+      if (response.status === 200) {
+        props.setOtppanal(false);
+        navigate('/captain-riding', { state: { ride: props.ride } });
+      }
     }
     catch (error) {
       console.error("Error confirming ride:", error);

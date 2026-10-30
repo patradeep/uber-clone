@@ -1,4 +1,4 @@
-import React,{useContext} from 'react';
+import React, { useContext } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useNavigate } from 'react-router-dom';
 import { SocketContext } from '../context/socketContext';
@@ -17,7 +17,7 @@ function RidingToDastination() {
 
   return (
     <div className="h-screen relative">
-      <LiveTracking/>
+      <LiveTracking />
       {ride && (
         <div className="absolute bottom-0 left-0 right-0 bg-white p-4 shadow-lg">
           <h2 className="text-xl font-semibold mb-2">Ride Details</h2>

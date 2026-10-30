@@ -16,7 +16,7 @@ module.exports.getCoordinates=async(req, res, next) => {
   }
 };
 
-module.exports.getDistanceAndTime=async(req, res,next) => {
+module.exports.getDistanceAndTime=async(req, res,next) => { 
   try{
     const error=validationResult(req);
     if(!error.isEmpty()){

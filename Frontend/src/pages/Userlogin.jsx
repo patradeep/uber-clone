@@ -1,24 +1,24 @@
 import React, { useContext, useState } from "react";
-import { Link,useNavigate } from "react-router-dom";
-import {UserDataContext} from "../context/UserContext";
+import { Link, useNavigate } from "react-router-dom";
+import { UserDataContext } from "../context/UserContext";
 import axios from "axios";
 
 const Userlogin = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const {user,setUser}=useContext(UserDataContext);
+  const { user, setUser } = useContext(UserDataContext);
   const navigate = useNavigate();
 
-  const SubmitHandler = async(e) => {
+  const SubmitHandler = async (e) => {
     e.preventDefault();
     // call login API here
     // for now, I'll just console.log the values
-    const userData={email,password};
+    const userData = { email, password };
     const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/users/login`, userData);
-    if(response.status===201){
+    if (response.status === 201) {
       localStorage.setItem('token', response.data.token);
       setUser(response.data.user); // add this line to update user context when login successful
-      
+
       navigate("/home");
     }
 

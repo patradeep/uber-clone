@@ -15,51 +15,51 @@ function CaptainHome() {
   const ridePopupRef = useRef(null);
   const { socket } = useContext(SocketContext);
   const [otppanal, setOtppanal] = useState(false)
-  const otpRef=useRef(null)
-  useEffect(()=>{
-      if(captain){
-        socket.emit('join',{userType: 'captain', userId:captain._id});
-        const updateLocation = () => {
-          if (navigator.geolocation) {
-              navigator.geolocation.getCurrentPosition(position => {
+  const otpRef = useRef(null)
+  useEffect(() => {
+    if (captain) {
+      socket.emit('join', { userType: 'captain', userId: captain._id });
+      const updateLocation = () => {
+        if (navigator.geolocation) {
+          navigator.geolocation.getCurrentPosition(position => {
 
-                  socket.emit('update-location-captain', {
-                      userId: captain._id,
-                      location: {
-                          ltd: position.coords.latitude,
-                          lng: position.coords.longitude
-                      }
-                  })
-              })
-          }
+            socket.emit('update-location-captain', {
+              userId: captain._id,
+              location: {
+                ltd: position.coords.latitude,
+                lng: position.coords.longitude
+              }
+            })
+          })
+        }
       }
 
       const locationInterval = setInterval(updateLocation, 10000)
       updateLocation()
-      }
-    },[captain])
+    }
+  }, [captain])
 
-    socket.on('new-ride', (data) => {
-      setRide(data);
-      setRidePopup(true);
-    })
+  socket.on('new-ride', (data) => {
+    setRide(data);
+    setRidePopup(true);
+  })
 
-    async function confirmRide() {
-      
-  try {
-    const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
-      rideId: ride._id,
-      captainId: captain._id,
-    }, {
-      headers: {
-        Authorization: `Bearer ${localStorage.getItem('token')}`
-      }
-    });
+  async function confirmRide() {
 
-  } catch (error) {
-    console.error('Error confirming ride:', error);
+    try {
+      const response = await axios.post(`${import.meta.env.VITE_BASE_URL}/rides/confirm`, {
+        rideId: ride._id,
+        captainId: captain._id,
+      }, {
+        headers: {
+          Authorization: `Bearer ${localStorage.getItem('token')}`
+        }
+      });
+
+    } catch (error) {
+      console.error('Error confirming ride:', error);
+    }
   }
-}
 
 
   useEffect(() => {
@@ -74,7 +74,7 @@ function CaptainHome() {
     if (otppanal) {
       gsap.to(otpRef.current, { transform: "translatey(0)" });
     } else {
-      gsap.to(otpRef.current, { transform: "translatey(100%)" ,visibility: "hidden" });
+      gsap.to(otpRef.current, { transform: "translatey(100%)", visibility: "hidden" });
     }
   }, [otppanal]);
 
@@ -82,7 +82,7 @@ function CaptainHome() {
     <div>
       <div className="h-screen overflow-hidden">
         <div className="h-[67%]">
-          <LiveTracking/>
+          <LiveTracking />
         </div>
 
         <div className="h-[33%] bg-slate-100 p-4">
@@ -123,19 +123,19 @@ function CaptainHome() {
           ref={ridePopupRef}
           className="fixed bottom-0 w-full translate-y-full bg-white px-2 py-4"
         >
-          <RidePopup 
-          ride={ride}
-          setOtppanal={setOtppanal}
-          confirmRide={confirmRide}
-          setRidePopup={setRidePopup} />
+          <RidePopup
+            ride={ride}
+            setOtppanal={setOtppanal}
+            confirmRide={confirmRide}
+            setRidePopup={setRidePopup} />
         </div>
         <div
-        ref={otpRef}
-        className="fixed bottom-0 w-full translate-y-full bg-white px-2 py-4 "
-      >
-        <SubmitOtp ride={ride} setOtppanal={setOtppanal}
-        />
-      </div>
+          ref={otpRef}
+          className="fixed bottom-0 w-full translate-y-full bg-white px-2 py-4 "
+        >
+          <SubmitOtp ride={ride} setOtppanal={setOtppanal}
+          />
+        </div>
       </div>
     </div>
   );

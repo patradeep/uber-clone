@@ -1,10 +1,10 @@
 import React from "react";
-import { Link,useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 
 function RidePopup(props) {
   const navigate = useNavigate();
-  
+
   return (
     <div>
       <h2 className="text-xl font-semibold text-center p-3">
@@ -12,7 +12,7 @@ function RidePopup(props) {
       </h2>
       <div className="flex items-center bg-yellow-400 p-3 rounded-md justify-between">
         <div className="flex items-center gap-3">
-        <img className="w-10 rounded-full h-10" src="https://images.pexels.com/photos/1321909/pexels-photo-1321909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
+          <img className="w-10 rounded-full h-10" src="https://images.pexels.com/photos/1321909/pexels-photo-1321909.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1" alt="" />
           <h3 className="text-lg font-medium">{props.ride?.userId.name.firstname} {props.ride?.userId.name.lastname}</h3>
         </div>
         <h5 className="text-lg font-semibold">2.2km</h5>
@@ -40,8 +40,8 @@ function RidePopup(props) {
       </div>
       <button
         onClick={() => {
-        props.confirmRide();
-        props.setOtppanal(true);
+          props.confirmRide();
+          props.setOtppanal(true);
         }
         }
         className=" text-center block w-full text-lg font-medium mb-2 bg-blue-600 hover:bg-blue-700 text-white p-2 rounded-md"
@@ -50,7 +50,7 @@ function RidePopup(props) {
       </button>
       <button
         onClick={() => {
-        props.setRidePopup(false);
+          props.setRidePopup(false);
         }}
         className=" text-center w-full text-lg font-medium bg-slate-300 hover:bg-slate-400  p-2 rounded-md"
       >
